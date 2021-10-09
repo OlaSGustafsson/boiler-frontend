@@ -1,0 +1,39 @@
+.snapshottable {
+  border: 0;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.grad {
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    180deg,
+    var(--temp0) 0%,
+    var(--temp1) var(--gradientmiddle),
+    var(--temp2) 100%
+  );
+  flex-grow: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 100px;
+}
+.textcontainer {
+  text-align: center;
+  margin: 1rem;
+}
+.textbox {
+  background-color: gainsboro;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+.box {
+  height: 95vh;
+}
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,8 @@
+{
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/d7ad54bb-1547-447f-bd6d-e4396e86bf30/resourceGroups/funcolaboiler/providers/Microsoft.Web/sites/web-olaboiler",
+  "appService.deploySubpath": "."
+}
