@@ -1,0 +1,24 @@
+.page {
+  min-height: calc(100vh - 4.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.box {
+  min-width: 375px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0.5rem;
+  /* margin: 1rem; */
+}
+.box > * {
+  flex: 1 100%;
+}
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

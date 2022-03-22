@@ -1,9 +1,13 @@
 import React from "react";
 import { Snapshot } from "../components/Snapshot";
-import "../styles/Home.css";
+import { Weather } from "../components/Weather";
+import "../styles/Page.css";
 
-export const Home = () => (
-  <div className="home">
-    <Snapshot></Snapshot>
-  </div>
-);
+export const Home = (props: { setSensors: Function }) => {
+  return (
+    <div className="page">
+      <Weather></Weather>
+      <Snapshot setSensors={props.setSensors}></Snapshot>
+    </div>
+  );
+};
