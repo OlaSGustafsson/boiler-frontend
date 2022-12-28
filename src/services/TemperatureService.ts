@@ -1,8 +1,8 @@
 import { DataSnapshot, ChartData, Sensor } from "../types/types";
+import { apiKeyGetSensors, apiKeyGetLatest, apiKeyGetData } from "../secrets";
 
 export const GetSensors = async (): Promise<Sensor[]> => {
-  const url =
-    "https://func-boiler.azurewebsites.net/api/GetSensors?code=YUU3XXmyvIxg3kTmjfhUGV7HiRNY6MtTTFvo0kD3D10vAN6ZXvmMGw==";
+  const url = `https://func-boiler.azurewebsites.net/api/GetSensors?code=${apiKeyGetSensors}`;
   try {
     const response = await fetch(url, {
       method: "GET",
@@ -17,8 +17,7 @@ export const GetSensors = async (): Promise<Sensor[]> => {
 };
 
 export const GetLatest = async (): Promise<DataSnapshot> => {
-  const url =
-    "https://func-boiler.azurewebsites.net/api/GetLatest?code=O2VK4lAxxt6iaDqbv5eRIAJGN4FR/CeT2WS8VjHu2192Oc4R8s63Cg==";
+  const url = `https://func-boiler.azurewebsites.net/api/GetLatest?code=${apiKeyGetLatest}`;
   try {
     const response = await fetch(url, {
       method: "GET",
@@ -37,8 +36,7 @@ export const GetData = async (
   startTimeStamp: number,
   endTimeStamp: number
 ): Promise<ChartData> => {
-  const url =
-    "https://func-boiler.azurewebsites.net/api/GetData?code=X64FXJxbqOchQ/UAg5iBDDnF4QF14XGaIOWJnuJ0MHmMKnsTHy64ZA==";
+  const url = `https://func-boiler.azurewebsites.net/api/GetData?code=${apiKeyGetData}`;
   try {
     const response = await fetch(url, {
       method: "POST",
