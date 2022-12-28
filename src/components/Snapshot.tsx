@@ -12,6 +12,8 @@ export const Snapshot = (props: { setSensors: Function }) => {
     border: 0,
     ["--gradientmiddle" as any]: "70%",
   });
+  const [Update, setUpdate] = useState<boolean>(true);
+
   useEffect(() => {
     const fetchData = async () => {
       const latest = (await GetLatest()) as DataSnapshot;
@@ -40,7 +42,7 @@ export const Snapshot = (props: { setSensors: Function }) => {
     const calculatedGradient = calcGradients();
     setGradient(calculatedGradient);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Snapshot?.timestamp]);
+  }, [Snapshot?.timestamp, Update]);
 
   // const getDateString = (epochseconds: number): string => {
   //   const epochMillis = epochseconds * 1000;
@@ -75,8 +77,25 @@ export const Snapshot = (props: { setSensors: Function }) => {
       )}
       {Snapshot && (
         <div className="content">
-          <div className="title">Ackumulatortank</div>
-          <div className="subtitle">
+          <div className="level mb-0 is-mobile">
+            <div className="level-left">
+              <div className="level-item">
+                <div className="is-size-4-mobile has-text-weight-medium">
+                  Ackumulatortank
+                </div>
+              </div>
+            </div>
+            <div className="level-right">
+              <div className="level-item">
+                <button className="button" onClick={() => setUpdate(!Update)}>
+                  <span className="icon is-small">
+                    <i className="fas fa-sync-alt"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="is-size-6">
             {GetDateString(Snapshot?.timestamp as number)}
           </div>
           <div className="grad" style={Gradient}>
