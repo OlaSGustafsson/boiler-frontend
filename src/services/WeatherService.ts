@@ -1,5 +1,6 @@
 import { CurrentWeather } from "../types/types";
-import { openWeatherMapAppId } from "../secrets";
+
+const openWeatherMapAppId = process.env.REACT_APP_OpenWeatherMapAppId;
 
 export const GetCurrentWeather = async (): Promise<
   CurrentWeather | undefined
