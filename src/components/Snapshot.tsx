@@ -12,7 +12,6 @@ export const Snapshot = (props: { setSensors: Function }) => {
     border: 0,
     ["--gradientmiddle" as any]: "70%",
   });
-  const [Update, setUpdate] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,18 +41,7 @@ export const Snapshot = (props: { setSensors: Function }) => {
     const calculatedGradient = calcGradients();
     setGradient(calculatedGradient);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Snapshot?.timestamp, Update]);
-
-  // const getDateString = (epochseconds: number): string => {
-  //   const epochMillis = epochseconds * 1000;
-  //   const snapDate = new Date();
-  //   snapDate.setTime(epochMillis);
-  //   const timeZoneOffsetInMillis =
-  //     snapDate.getTimezoneOffset() * 60 * 1000 * -1 + epochMillis;
-  //   snapDate.setTime(timeZoneOffsetInMillis);
-  //   const snapArray = snapDate.toISOString().split("T");
-  //   return `${snapArray[0]} ${snapArray[1].slice(0, 5)}`;
-  // };
+  }, [Snapshot?.timestamp]);
 
   const getRgba = (temperature: number): string => {
     const max = 72,
@@ -87,7 +75,10 @@ export const Snapshot = (props: { setSensors: Function }) => {
             </div>
             <div className="level-right">
               <div className="level-item">
-                <button className="button" onClick={() => setUpdate(!Update)}>
+                <button
+                  className="button"
+                  onClick={() => setSnapshot(undefined)}
+                >
                   <span className="icon is-small">
                     <i className="fas fa-sync-alt"></i>
                   </span>
