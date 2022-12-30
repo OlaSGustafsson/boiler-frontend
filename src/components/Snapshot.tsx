@@ -3,7 +3,7 @@ import { DataSnapshot, SensorData } from "../types/types";
 import { GetLatest } from "../services/TemperatureService";
 import "../styles/Snapshot.css";
 import "../styles/Page.css";
-import { GetDateString } from "../logic/logic";
+import { GetDateString, CalcTotalEnergy } from "../logic/logic";
 import { SpinnerDotted } from "spinners-react";
 
 export const Snapshot = (props: { setSensors: Function }) => {
@@ -12,6 +12,7 @@ export const Snapshot = (props: { setSensors: Function }) => {
     border: 0,
     ["--gradientmiddle" as any]: "70%",
   });
+  const [Energy, setEnergy] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +23,7 @@ export const Snapshot = (props: { setSensors: Function }) => {
         name: s.name,
       }));
       props.setSensors(sensors);
+      setEnergy(CalcTotalEnergy(latest.sensors));
     };
     const calcGradients = (): CSSProperties => {
       let newGradient: CSSProperties = { ...Gradient };
@@ -71,6 +73,13 @@ export const Snapshot = (props: { setSensors: Function }) => {
                 <div className="is-size-4-mobile has-text-weight-medium">
                   Ackumulatortank
                 </div>
+              </div>
+              <div className="level-item">
+                <button className="button">
+                  <div className="is-size-5-mobile has-text-weight-medium">
+                    {Energy} kWh
+                  </div>
+                </button>
               </div>
             </div>
             <div className="level-right">

@@ -1,3 +1,5 @@
+import { SensorData } from "../types/types";
+
 export const GetDateString = (epochseconds: number): string => {
   if (!epochseconds) {
     return "Ogiltigt datum";
@@ -40,4 +42,16 @@ export const GetTimeStampSubHours = (hours: number, theDate?: Date) => {
   return Math.floor(
     fromDate.setTime(fromDate.getTime() - hours * 60 * 60 * 1000) / 1000
   );
+};
+
+export const CalcEnergy = (T: number, Tref = 20, V = 833): number => {
+  return 0.00116 * V * (T - Tref);
+};
+
+export const CalcTotalEnergy = (sensors: SensorData[]): number => {
+  const sum = sensors.reduce((accumulator, curSensor) => {
+    const energy = CalcEnergy(curSensor.temperature as number);
+    return accumulator + energy;
+  }, 0);
+  return Math.round(sum);
 };
