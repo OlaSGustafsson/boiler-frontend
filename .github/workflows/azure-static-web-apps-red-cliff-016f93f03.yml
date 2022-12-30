@@ -13,6 +13,10 @@ env:
   APP_LOCATION: "/" # location of your client code
   API_LOCATION: "api" # location of your api source code - optional
   APP_ARTIFACT_LOCATION: "build" # location of client code build output
+  REACT_APP_APIKEYGETDATA: ${{ secrets.REACT_APP_APIKEYGETDATA }}
+  REACT_APP_APIKEYGETLATEST: ${{ secrets.REACT_APP_APIKEYGETLATEST }}
+  REACT_APP_APIKEYGETSENSORS: ${{ secrets.REACT_APP_APIKEYGETSENSORS }}
+  REACT_APP_OPENWEATHERMAPAPPID: ${{ secrets.REACT_APP_OPENWEATHERMAPAPPID }}
 
 on:
   push:
