@@ -1,8 +1,8 @@
 import { DataSnapshot, ChartData, Sensor } from "../types/types";
 
-const apiKeyGetSensors = process.env.REACT_APP_ApiKeyGetSensors;
-const apiKeyGetLatest = process.env.REACT_APP_ApiKeyGetLatest;
-const apiKeyGetData = process.env.REACT_APP_ApiKeyGetData;
+const apiKeyGetSensors = process.env.REACT_APP_APIKEYGETSENSORS;
+const apiKeyGetLatest = process.env.REACT_APP_APIKEYGETLATEST;
+const apiKeyGetData = process.env.REACT_APP_APIKEYGETDATA;
 
 export const GetSensors = async (): Promise<Sensor[]> => {
   const url = `https://func-boiler.azurewebsites.net/api/GetSensors?code=${apiKeyGetSensors}`;
