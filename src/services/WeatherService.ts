@@ -1,18 +1,24 @@
 import { CurrentWeather } from "../types/types";
 
-const openWeatherMapAppId = process.env.REACT_APP_OPENWEATHERMAPAPPID;
-
 export const GetCurrentWeather = async (): Promise<
   CurrentWeather | undefined
 > => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?id=2667628&units=metric&lang=sv&appid=${openWeatherMapAppId}`;
+  const url = `/api/GetWeather`;
   try {
     const response = await fetch(url, {
-      method: "GET",
+      method: "POST",
       redirect: "follow",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        id: "2667628",
+        units: "metric",
+        lang: "sv",
+      }),
     });
-    const json = await response.json();
-    return json;
+    return await response.json();
   } catch (error) {
     console.error(error);
     return undefined;

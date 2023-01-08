@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Chart } from "../components/Chart";
 import { Sensor } from "../types/types";
 import { GetSensors } from "../services/TemperatureService";
-// import "../styles/Page.css";
 import { ChartFilter } from "../components/ChartFilter";
 
 export const ChartPage = (props: { sensors: Sensor[] }) => {

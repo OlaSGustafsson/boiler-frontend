@@ -1,18 +1,14 @@
 import { DataSnapshot, ChartData, Sensor } from "../types/types";
 
-const apiKeyGetSensors = process.env.REACT_APP_APIKEYGETSENSORS;
-const apiKeyGetLatest = process.env.REACT_APP_APIKEYGETLATEST;
-const apiKeyGetData = process.env.REACT_APP_APIKEYGETDATA;
-
 export const GetSensors = async (): Promise<Sensor[]> => {
-  const url = `https://func-boiler.azurewebsites.net/api/GetSensors?code=${apiKeyGetSensors}`;
+  const url = `/api/GetLogSensors`;
+  console.log(url);
   try {
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
     });
-    const json = await response.json();
-    return json;
+    return await response.json();
   } catch (error) {
     console.error(error);
     return [];
@@ -20,14 +16,13 @@ export const GetSensors = async (): Promise<Sensor[]> => {
 };
 
 export const GetLatest = async (): Promise<DataSnapshot> => {
-  const url = `https://func-boiler.azurewebsites.net/api/GetLatest?code=${apiKeyGetLatest}`;
+  const url = `/api/GetLatestLog`;
   try {
     const response = await fetch(url, {
       method: "GET",
       redirect: "follow",
     });
-    const json = await response.json();
-    return json;
+    return await response.json();
   } catch (error) {
     console.error(error);
     return { timestamp: new Date().getTime() / 1000, sensors: [] };
@@ -39,7 +34,7 @@ export const GetData = async (
   startTimeStamp: number,
   endTimeStamp: number
 ): Promise<ChartData> => {
-  const url = `https://func-boiler.azurewebsites.net/api/GetData?code=${apiKeyGetData}`;
+  const url = `/api/GetLogData`;
   try {
     const response = await fetch(url, {
       method: "POST",
@@ -50,8 +45,7 @@ export const GetData = async (
         EndTimeStamp: endTimeStamp,
       }),
     });
-    const json = await response.json();
-    return json;
+    return await response.json();
   } catch (error) {
     console.error(error);
     return {
