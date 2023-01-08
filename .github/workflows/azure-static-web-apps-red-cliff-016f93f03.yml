@@ -45,6 +45,9 @@ jobs:
           app_location: ${{ env.APP_LOCATION }}
           api_location: ${{ env.API_LOCATION }}
           app_artifact_location: ${{ env.APP_ARTIFACT_LOCATION }}
+          output_location: 'dist'
+          app_build_command: 'npm run build'
+          api_build_command: 'npm run build'
 
   close:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
